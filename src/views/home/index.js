@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import logo from './logo.svg';
+import logo from '../../../src/logo.svg';
 // import './App.css';
 import store from '../../store'
 import { Provider } from 'react-redux'
@@ -17,9 +17,7 @@ function Home(props){
 
   const val =(e)=>{
     const name = (e.target.value)
-    // const newList = [...list]
-    // newList.push(name)
-    // setList(newList)
+    
     setText(name)
 
   }
@@ -30,16 +28,16 @@ function Home(props){
     setList(newList)
      props.updateTheUser(newList)
     setText('')
-    //  console.log(newList)
+   
   }
 
-  console.log('final data--> ',props.newList)
+  console.log('final data--> ',  )
 
   return (
     <Provider store={store}>
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <img src={logo} className="App-logo" alt="logo" />
         <h1>Todo list By Redux</h1>
         <div>
           <input onChange={val} type='text' value={text}/>
@@ -54,18 +52,7 @@ function Home(props){
             )
           })}
         </div>
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          todo list by react redux
-          <p>hello world</p>
-        </a> */}
+     
 
       </header>
     </div>
@@ -75,13 +62,10 @@ function Home(props){
 
 
 const mapStateToProps=(state)=>{
-    // const find = ( state.user)
-    // setFinal(state)
+    
     console.log(state)
      
-    // const fit = [...state]
-    // fit.push(state)
-    // setFinal(fit)
+ 
     return {
         newList: state.newList
     }
