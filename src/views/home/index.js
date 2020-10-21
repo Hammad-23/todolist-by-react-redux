@@ -5,6 +5,7 @@ import store from '../../store'
 import { Provider } from 'react-redux'
 import { updateUser } from '../../store/actions/userActions'
 import { connect } from 'react-redux'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function Home(props){
@@ -40,14 +41,14 @@ function Home(props){
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Todo list By Redux</h1>
         <div>
-          <input onChange={val} type='text' value={text}/>
-          <button onClick={add} style={{backgroundColor: 'green',padding: '7px'}}>Add</button>
+          <input className='form-control' onChange={val} type='text' value={text}/>
+          <button  onClick={add} className='btn btn-success'>Add</button>
         </div>
-        <div>
+        <div style={{marginTop:'2rem'}}>
           {list.map(function(item){
             return(
               <ol>
-                <li>{item}<button>delete</button></li>
+                <li>{item}<button className='btn btn-primary'>delete</button></li>
               </ol>
             )
           })}
