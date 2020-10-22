@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../../src/logo.svg';
 // import './App.css';
-import store from '../../store'
+import { store, persistor } from '../../store'
 import { Provider } from 'react-redux'
 import { updateUser } from '../../store/actions/userActions'
 import { connect } from 'react-redux'
@@ -32,8 +32,8 @@ function Home(props){
    
   }
 
-  console.log('final data--> ',  )
-
+  console.log('final data--> ', props.newTheList )
+ 
   return (
     <Provider store={store}>
     <div className="App">
@@ -68,7 +68,7 @@ const mapStateToProps=(state)=>{
      
  
     return {
-        newList: state.newList
+        newTheList: state.newList
     }
 }
 
