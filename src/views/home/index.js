@@ -13,7 +13,7 @@ function Home(props){
     const [list,setList] = useState([])
   const [text,setText] = useState('')
 
-//   const [final,setFinal] = useState([])
+  const [final,setFinal] = useState([])
  
 
   const val =(e)=>{
@@ -29,13 +29,23 @@ function Home(props){
     setList(newList)
      props.updateTheUser(newList)
     setText('')
+
+    const finalList = [...final]
+    finalList.push(props.newTheList)
+    setFinal(finalList)
+
+
    
   }
+   
+  // const [final,setFinal]= useState([])
+  //  final.push(...final,props.newTheList)
 
-  console.log('final data--> ', props.newTheList )
+
+
  
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -45,7 +55,7 @@ function Home(props){
           <button  onClick={add} className='btn btn-success'>Add</button>
         </div>
         <div style={{marginTop:'2rem'}}>
-          {list.map(function(item){
+          {final.map(function(item){
             return(
               <ol>
                 <li>{item}<button className='btn btn-primary'>delete</button></li>
@@ -57,18 +67,21 @@ function Home(props){
 
       </header>
     </div>
-    </Provider>
+    // </Provider>
   );
+
+  
+  
 }
 
 
 const mapStateToProps=(state)=>{
     
-    console.log(state)
+    console.log('state.newlist--> ', state.user)
      
  
     return {
-        newTheList: state.newList
+        newTheList: state.user
     }
 }
 
@@ -82,5 +95,7 @@ const mapDispatchToProps=(dispatch)=>{
 
 
 }
+
+
 
 export default connect(mapStateToProps,mapDispatchToProps )( Home )
